@@ -11,31 +11,33 @@ const category = require('../models/category');
 
 router.post('/', (req, res) => {
     //console.log(req.body);
-    // db.categoriesMedias.create({
-    //     mediaId: req.body.mediaId,
-    //     categoryId: req.body.categoryId,
-    //     userId: req.user.id,
-    // })
-    // .then((createdCategoriesMedias) => {
-    //     console.log('Created CategoriesMedias = ', createdCategoriesMedias);
-    //     res.redirect('/categories')
-    // });
-    db.category.findOne({
-        where: {
-            id: req.body.categoryId,
-        }
-    }
-    ).then((currentCategory) => {
-        console.log('Created currentCategory = ', currentCategory);
-        db.media.findOne({
-            where:
-                { id: req.body.mediaId }
-        }).then((currentMedia) => {
-            console.log('Created currentMedia = ', currentMedia);
-            currentCategory.addMedia(currentMedia).then((currentRel) =>
-                res.redirect('/categories'))
-        })
+    db.categoriesMedia.create({
+        mediumId: req.body.mediaId,
+        categoryId: req.body.categoryId,
+        userId: req.user.id,
+    })
+    .then((createdcategoriesMedia) => {
+        console.log('Created categoriesMedia = ', createdcategoriesMedia);
+        res.redirect('/categories')
     });
+    // db.category.findOne({
+    //     where: {
+    //         id: req.body.categoryId,
+    //     }
+    // }
+    // ).then((currentCategory) => {
+    //     console.log('Created currentCategory = ******************************************', currentCategory);
+    //     db.media.findOne({
+    //         where:
+    //             { id: req.body.mediaId }
+    //     }).then((currentMedia) => {
+    //         console.log('Created currentMedia = ', currentMedia);
+    //         currentCategory.addMedia(currentMedia).then((currentRel) =>{
+    //             console.log("Create currentRel = ", currentRel);
+    //             res.redirect(`/categories/${req.body.categoryId}`)
+    //         })
+    //     })
+    // });
 });
 
 

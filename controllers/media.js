@@ -10,18 +10,20 @@ const category = require('../models/category');
 //GET routes
 router.get('/', (req, res) => {
     if (req.user) {
-        db.media.findAll({
+        db.medium.findAll({
             where: {
                 userId: req.user.id
             }
         }).then(mediaResponse => {
+            console.log("mediaResponse",mediaResponse)
             db.category.findAll({
                 where: {
                     userId: req.user.id
                 }
             }).then((categoryResponse) => {
+                console.log("categoryResponse",categoryResponse)
                 res.render('media', {
-                    medias: mediaResponse,
+                    medium: mediaResponse,
                     categories: categoryResponse,
                 })
             })
@@ -38,7 +40,7 @@ router.get('/', (req, res) => {
 //POST routes - posting new media to database
 router.post('/', (req, res) => {
     console.log(req.body);
-    db.media.create({
+    db.medium.create({
         mediaName: req.body.mediaName,
         mediaUrl: req.body.mediaUrl,
         userId: req.user.id,
@@ -50,7 +52,7 @@ router.post('/', (req, res) => {
 
 //PUT routes - changing/updating media name
 router.put('/:id', (req, res) => {
-    db.media.update({ mediaName: req.body.name }, {
+    db.medium.update({ mediaName: req.body.name }, {
         where: {
             id: req.params.id
         }
@@ -63,7 +65,7 @@ router.put('/:id', (req, res) => {
 
 //DELETE routes
 router.delete('/:id', (req, res) => {
-    db.media.destroy({
+    db.medium.destroy({
         where: {
             id: req.params.id
         }

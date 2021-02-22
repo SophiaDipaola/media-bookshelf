@@ -51,8 +51,8 @@
                     <td>
                         
                         <a href="/categories/<%= category.id %>"><%= category.name %></a>
-                        <% if (category.medias) {%>
-                            <% category.medias.forEach(function(catMedia) { %>
+                        <% if (category.media) {%>
+                            <% category.media.forEach(function(catMedia) { %>
                                 <div>
                                     <%= catMedia.mediaName %>
                                 </div>

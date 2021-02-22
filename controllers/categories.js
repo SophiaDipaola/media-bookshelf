@@ -71,7 +71,10 @@ router.get('/:id', (req, res) => {
         where: { id: req.params.id }
     })
         .then((currentCat) => {
-            console.log(currentCat.media);
+            console.log("media=", currentCat.media);
+            console.log("media=", currentCat.media);
+            console.log("medium=", currentCat.medium);
+            console.log("mediums=", currentCat.mediums);
             res.render('categories/show', { currentCat });
         })
 })

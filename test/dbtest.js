@@ -24,13 +24,13 @@ const db = require('../models')
 //     userId: 1,
 // });
 
-// db.media.create({
+// db.medium.create({
 //     mediaName: "star wars",
 //     userId: 1,
 
 // });
 
-// db.media.create({
+// db.medium.create({
 //     mediaName: "this american life",
 //     userId: 1,
   

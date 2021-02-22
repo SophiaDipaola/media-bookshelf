@@ -6,16 +6,16 @@
         <th>Add to</th>
         <th></th>
     </tr>
-<% medias.forEach(function(media) { %>
+<% media.forEach(function(medium) { %>
     <tr>
         <td>
-            <a href="<%= media.mediaUrl%>">
-                <%= media.mediaName %>
+            <a href="<%= medium.mediaUrl%>">
+                <%= medium.mediaName %>
             </a>
         </td>
 
         <form method="POST" action="/categoriesMedias">
-            <input hidden value="<%= media.id %> " type="text" name="mediaId">
+            <input hidden value="<%= medium.id %> " type="text" name="mediaId">
             <td>
                 <select id="categoryId" name="categoryId">
                     <% categories.forEach(function(category) { %>
@@ -29,7 +29,7 @@
             </td>
         </form>
         <td>
-            <form method="post" action="/media/<%=media.id%>?_method=DELETE">
+            <form method="post" action="/media/<%=medium.id%>?_method=DELETE">
                 <button type="submit">Delete</button>
             </form>
         </td>
